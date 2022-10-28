@@ -34,11 +34,13 @@ export default function Welcome(props) {
     return (
         <>
             <Head title="Home" />
-            <div class="h-screen px-4 flex flex-col items-center justify-center bg-[#f2d860]">
+            <div className="h-screen px-4 flex flex-col items-center justify-center">
                 <div className="mb-12">
                     <FloatingIcons />
                 </div>
-                <div className="mb-4 text-3xl lg:text-5xl text-center">Hawker open or not?</div>
+                <div className="mb-4 text-3xl lg:text-5xl text-center">
+                    Hawker open or not?
+                </div>
                 <div className="mb-6 text-xl lg:text-3xl text-center">
                     Find out when hawker centres are open or closed for cleaning
                 </div>
