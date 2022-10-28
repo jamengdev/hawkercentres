@@ -38,8 +38,8 @@ export default function Welcome(props) {
                 <div className="mb-12">
                     <FloatingIcons />
                 </div>
-                <div className="mb-4 text-5xl">Hawker open or not?</div>
-                <div className="mb-6 text-3xl text-center">
+                <div className="mb-4 text-3xl lg:text-5xl text-center">Hawker open or not?</div>
+                <div className="mb-6 text-xl lg:text-3xl text-center">
                     Find out when hawker centres are open or closed for cleaning
                 </div>
                 <div className="max-w-3xl mx-auto w-full relative">
