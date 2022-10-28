@@ -91,15 +91,15 @@ export default function Welcome(props) {
 const FloatingIcons = () => {
     return (
         <div className="flex space-x-12 overflow-hidden">
-            <img className="w-20" src="/images/ramen-one.png" />
-            <img className="w-20" src="/images/ramen-two.png" />
-            <img className="w-20" src="/images/curry-rice-one.png" />
-            <img className="w-20" src="/images/ramen-one.png" />
-            <img className="w-20" src="/images/ramen-two.png" />
-            <img className="w-20" src="/images/curry-rice-one.png" />
-            <img className="w-20" src="/images/ramen-one.png" />
-            <img className="w-20" src="/images/ramen-two.png" />
-            <img className="w-20" src="/images/curry-rice-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-two.png" />
+            <img className="w-16 lg:w-20" src="/images/curry-rice-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-two.png" />
+            <img className="w-16 lg:w-20" src="/images/curry-rice-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-one.png" />
+            <img className="w-16 lg:w-20" src="/images/ramen-two.png" />
+            <img className="w-16 lg:w-20" src="/images/curry-rice-one.png" />
         </div>
     );
 };
