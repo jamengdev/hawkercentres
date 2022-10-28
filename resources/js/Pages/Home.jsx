@@ -49,8 +49,14 @@ export default function Welcome(props) {
                         value={selectedHawker}
                         onChange={setSelectedHawker}
                     >
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-5">
+                            <img
+                                className="w-6"
+                                src="/images/map-pin.png"
+                            />
+                        </div>
                         <Combobox.Input
-                            className={`w-full h-11 border-none focus:ring-0 shadow-md shadow-[#ffc700] ${
+                            className={`w-full h-11 border-none focus:ring-0 shadow-md shadow-[#ffc700] pl-14 ${
                                 query ? "rounded-t-3xl" : "rounded-3xl"
                             }`}
                             onChange={(event) => setQuery(event.target.value)}
