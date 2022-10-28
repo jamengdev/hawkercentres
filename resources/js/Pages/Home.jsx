@@ -50,10 +50,7 @@ export default function Welcome(props) {
                         onChange={setSelectedHawker}
                     >
                         <div className="absolute inset-y-0 left-0 flex items-center pl-5">
-                            <img
-                                className="w-6"
-                                src="/images/map-pin.png"
-                            />
+                            <img className="w-6" src="/images/map-pin.png" />
                         </div>
                         <Combobox.Input
                             className={`w-full h-11 border-none focus:ring-0 shadow-md shadow-[#ffc700] pl-14 ${
@@ -69,14 +66,14 @@ export default function Welcome(props) {
                             leaveTo="opacity-0"
                             afterLeave={() => setQuery("")}
                         >
-                            <div className="absolute max-w-3xl w-full bg-white rounded-b-3xl">
+                            <div className="absolute max-w-3xl w-full bg-white rounded-b-3xl shadow-md shadow-[#ffc700]">
                                 <Combobox.Options>
                                     {filtered.map((hawker) => (
                                         <Combobox.Option
                                             key={hawker._id}
                                             value={hawker}
                                             className={({ active }) =>
-                                                `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                                `relative cursor-default select-none py-2 pl-14 pr-4 ${
                                                     active
                                                         ? "bg-[#f2d860] text-black bg-opacity-25"
                                                         : "text-black"
@@ -86,6 +83,21 @@ export default function Welcome(props) {
                                             {hawker.name}
                                         </Combobox.Option>
                                     ))}
+                                    {query && filtered.length === 0 && (
+                                        <Combobox.Option
+                                            disabled={true}
+                                            value={null}
+                                            className="relative cursor-default select-none py-2 pl-14 pr-4 break-words"
+                                        >
+                                            <div>
+                                                We couldn't find "{query}"
+                                            </div>
+                                            <div className="text-xs text-gray-400">
+                                                Try searching for hawker centre
+                                                name or address
+                                            </div>
+                                        </Combobox.Option>
+                                    )}
                                 </Combobox.Options>
                             </div>
                         </Transition>
