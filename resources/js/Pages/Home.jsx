@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Head } from "@inertiajs/inertia-react";
+import { Head, Link } from "@inertiajs/inertia-react";
 import { Combobox, Transition } from "@headlessui/react";
 
 export default function Welcome(props) {
@@ -9,9 +9,13 @@ export default function Welcome(props) {
     const [filtered, setFiltered] = useState([]);
 
     useEffect(() => {
-        let serializedData = props.hawkers.map((hawker) =>
-            JSON.parse(hawker.api_data)
-        );
+        // todo: how to not manipulate the data like this?
+        let serializedData = props.hawkers.map((hawker) => {
+            let obj = Object.assign({});
+            obj = JSON.parse(hawker.api_data);
+            obj.url = hawker.url;
+            return obj;
+        });
 
         setHawkers(serializedData);
     }, []);
@@ -33,7 +37,7 @@ export default function Welcome(props) {
 
     return (
         <>
-            <Head title="Home" />
+            <Head title="Hawkers" />
             <div className="h-screen px-4 flex flex-col items-center justify-center">
                 <div className="mb-12">
                     <FloatingIcons />
@@ -80,7 +84,11 @@ export default function Welcome(props) {
                                                 }`
                                             }
                                         >
-                                            {hawker.name}
+                                            <Link
+                                                href={`/hawkers/${hawker.url}`}
+                                            >
+                                                {hawker.name}
+                                            </Link>
                                         </Combobox.Option>
                                     ))}
                                     {query && filtered.length === 0 && (

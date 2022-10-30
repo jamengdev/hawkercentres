@@ -20,6 +20,8 @@ Route::get('/', function () {
     return Inertia::render('Home', [
         'hawkers' => Hawkers::all()
     ]);
+
+    // todo: clean up files related to these
     // return Inertia::render('Welcome', [
     //     'canLogin' => Route::has('login'),
     //     'canRegister' => Route::has('register'),
@@ -28,6 +30,13 @@ Route::get('/', function () {
     // ]);
 });
 
+Route::get('/hawkers/{hawker:url}', function (Hawkers $hawker) {
+    return Inertia::render('Hawker', [
+        'hawker' => $hawker
+    ]);
+});
+
+// todo: clean up files related to these
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
