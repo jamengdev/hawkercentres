@@ -6,9 +6,11 @@ export default function Welcome({ hawker }) {
     return (
         <>
             <Head title={data.name} />
-            <div className="h-screen px-4 flex flex-col items-center justify-center">
+            <div className="h-screen px-4 mt-24 lg:mt-0 lg:flex lg:flex-col lg:items-center lg:justify-center">
                 <div className="text-5xl text-center mb-4">{data.name}</div>
-                <div className="text-3xl text-center mb-2">Scheduled Cleaning</div>
+                <div className="text-3xl text-center mb-2">
+                    Scheduled Cleaning
+                </div>
                 <div>
                     {data.q1_cleaningenddate} to {data.q1_cleaningstartdate}
                 </div>

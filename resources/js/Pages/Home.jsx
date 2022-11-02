@@ -38,7 +38,7 @@ export default function Welcome(props) {
     return (
         <>
             <Head title="Hawkers" />
-            <div className="h-screen px-4 flex flex-col items-center justify-center">
+            <div className="h-screen px-4 mt-24 lg:mt-0 lg:flex lg:flex-col lg:items-center lg:justify-center">
                 <div className="mb-12">
                     <FloatingIcons />
                 </div>
@@ -84,6 +84,7 @@ export default function Welcome(props) {
                                                 }`
                                             }
                                         >
+                                            {/* todo: can this be using named route instead? */}
                                             <Link
                                                 href={`/hawkers/${hawker.url}`}
                                             >
