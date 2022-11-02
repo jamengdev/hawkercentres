@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Head, Link } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
 import { Combobox, Transition } from "@headlessui/react";
 
 export default function Welcome(props) {
@@ -53,7 +54,11 @@ export default function Welcome(props) {
                     <div className="max-w-3xl mx-auto w-full relative">
                         <Combobox
                             value={selectedHawker}
-                            onChange={setSelectedHawker}
+                            onChange={(value) => {
+                                /* todo: can this be using named route instead? */
+                                setSelectedHawker(value);
+                                Inertia.get(`/hawkers/${value.url}`);
+                            }}
                         >
                             <div className="absolute inset-y-0 left-0 flex items-center pl-5">
                                 <img
@@ -91,12 +96,7 @@ export default function Welcome(props) {
                                                     }`
                                                 }
                                             >
-                                                {/* todo: can this be using named route instead? */}
-                                                <Link
-                                                    href={`/hawkers/${hawker.url}`}
-                                                >
-                                                    {hawker.name}
-                                                </Link>
+                                                <div>{hawker.name}</div>
                                             </Combobox.Option>
                                         ))}
                                         {query && filtered.length === 0 && (
