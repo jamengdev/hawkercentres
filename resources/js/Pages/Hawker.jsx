@@ -1,8 +1,8 @@
 import { Head, Link } from "@inertiajs/inertia-react";
 
-export default function Welcome({ hawker }) {
+export default function Welcome({ hawker, isOpenNow }) {
     const data = JSON.parse(hawker.api_data);
-    console.log(data);
+
     return (
         <>
             <Head title={data.name} />
@@ -14,7 +14,7 @@ export default function Welcome({ hawker }) {
                     <div className="bg-[#F5F5F5] w-full rounded-[1rem] flex flex-col justify-center items-center py-10 px-6 lg:py-20 lg:px-10">
                         <img
                             className="w-20 lg:w-32 mb-6"
-                            src="/images/open.png"
+                            src={isOpenNow ? "/images/open.png" : "/images/closed.png"}
                         />
                         <div className="text-2xl lg:text-4xl font-bold text-center mb-2">
                             {data.name}

@@ -3,7 +3,7 @@ import { Head, Link } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import { Combobox, Transition } from "@headlessui/react";
 
-export default function Welcome(props) {
+export default function Home(props) {
     const [hawkers, setHawkers] = useState([]);
     const [selectedHawker, setSelectedHawker] = useState("");
     const [query, setQuery] = useState("");

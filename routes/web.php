@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HawkerController;
 use App\Models\Hawkers;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,25 +17,28 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'hawkers' => Hawkers::all()
-    ]);
+Route::get('/', [HawkerController::class, 'index']);
+Route::get('/hawkers/{hawker:url}', [HawkerController::class, 'show']);
 
-    // todo: clean up files related to these
-    // return Inertia::render('Welcome', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Home', [
+//         'hawkers' => Hawkers::all()
+//     ]);
 
-Route::get('/hawkers/{hawker:url}', function (Hawkers $hawker) {
-    return Inertia::render('Hawker', [
-        'hawker' => $hawker
-    ]);
-});
+//     // todo: clean up files related to these
+//     // return Inertia::render('Welcome', [
+//     //     'canLogin' => Route::has('login'),
+//     //     'canRegister' => Route::has('register'),
+//     //     'laravelVersion' => Application::VERSION,
+//     //     'phpVersion' => PHP_VERSION,
+//     // ]);
+// });
+
+// Route::get('/hawkers/{hawker:url}', function (Hawkers $hawker) {
+//     return Inertia::render('Hawker', [
+//         'hawker' => $hawker
+//     ]);
+// });
 
 // todo: clean up files related to these
 // Route::get('/dashboard', function () {
