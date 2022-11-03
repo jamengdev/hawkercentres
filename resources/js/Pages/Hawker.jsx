@@ -1,6 +1,6 @@
 import { Head, Link } from "@inertiajs/inertia-react";
 
-export default function Welcome({
+export default function Hawker({
     hawker,
     isOpenNow,
     nextScheduledCleaningDate,
@@ -12,9 +12,12 @@ export default function Welcome({
         <>
             <Head title={data.name} />
             <div className="px-10 lg:flex lg:flex-col lg:items-center lg:justify-center">
-                <div className="flex flex-col max-w-7xl">
-                    <div className="my-10 text-3xl lg:text-5xl text-center">
-                        Hawker open or not?
+                <div className="flex flex-col max-w-7xl w-full">
+                    <div className="flex justify-center">
+                        <img
+                            className="my-6 lg:my-10 w-full max-w-lg"
+                            src="/images/logo.png"
+                        />
                     </div>
                     <div className="bg-[#F5F5F5] w-full rounded-[1rem] flex flex-col justify-center items-center py-10 px-6 lg:py-20 lg:px-10">
                         <img

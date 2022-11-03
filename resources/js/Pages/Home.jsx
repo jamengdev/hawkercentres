@@ -40,12 +40,15 @@ export default function Home(props) {
         <>
             <Head title="Hawkers" />
             <div className="px-10 lg:flex lg:flex-col lg:items-center lg:justify-center">
-                <div className="flex flex-col max-w-7xl">
+                <div className="flex flex-col max-w-7xl w-full">
                     <div className="mt-20 mb-6 lg:mt-40 lg:mb-12">
                         <FloatingIcons />
                     </div>
-                    <div className="mb-4 text-3xl lg:text-5xl text-center">
-                        Hawker open or not?
+                    <div className="flex justify-center">
+                        <img
+                            className="my-6 lg:my-10 w-full max-w-lg"
+                            src="/images/logo.png"
+                        />
                     </div>
                     <div className="mb-6 text-xl lg:text-3xl text-center">
                         Find out when hawker centres are open or closed for
