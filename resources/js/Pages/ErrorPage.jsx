@@ -1,4 +1,4 @@
-import { Head, Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/inertia-react";
 
 export default function ErrorPage({ status }) {
     const description = {
