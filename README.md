@@ -1,5 +1,5 @@
-## What is this?
-To easily find whether the hawker centres in singapore are closed for cleaning. Because there were a few times my wife and me reached the hawker centre and realised it was closed!
+## Why this?
+Designed and built because we wanted to eat, but hawker centre was closed for cleaning. Data from https://data.gov.sg/ ♥
 
 ## Todo
 List of things to work on. It is listed either here or in the code as "todo:" whichever is more convenient.
