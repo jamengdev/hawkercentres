@@ -13,6 +13,35 @@ class Hawkers extends Model
 
     protected $guarded = [];
 
+    public function nextScheduledCleaningDate()
+    {
+        $data = json_decode($this->api_data);
+        $now = Carbon::now();
+        $nextScheduled = Carbon::now()->endOfYear();
+
+        $startCleaningDateQ1 = Carbon::createFromFormat('d/m/Y', $data->q1_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+        if ($now->isBefore($startCleaningDateQ1) && $startCleaningDateQ1->isBefore($nextScheduled)) {
+            $nextScheduled = $startCleaningDateQ1;
+        }
+
+        $startCleaningDateQ2 = Carbon::createFromFormat('d/m/Y', $data->q2_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+        if ($now->isBefore($startCleaningDateQ2) && $startCleaningDateQ2->isBefore($nextScheduled)) {
+            $nextScheduled = $startCleaningDateQ2;
+        }
+
+        $startCleaningDateQ3 = Carbon::createFromFormat('d/m/Y', $data->q3_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+        if ($now->isBefore($startCleaningDateQ3) && $startCleaningDateQ3->isBefore($nextScheduled)) {
+            $nextScheduled = $startCleaningDateQ3;
+        }
+
+        $startCleaningDateQ4 = Carbon::createFromFormat('d/m/Y', $data->q4_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+        if ($now->isBefore($startCleaningDateQ4) && $startCleaningDateQ4->isBefore($nextScheduled)) {
+            $nextScheduled = $startCleaningDateQ4;
+        }
+
+        return $nextScheduled;
+    }
+
     public function isOpenNow()
     {
         $data = json_decode($this->api_data);

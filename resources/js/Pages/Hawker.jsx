@@ -1,6 +1,10 @@
 import { Head, Link } from "@inertiajs/inertia-react";
 
-export default function Welcome({ hawker, isOpenNow }) {
+export default function Welcome({
+    hawker,
+    isOpenNow,
+    nextScheduledCleaningDate,
+}) {
     const data = JSON.parse(hawker.api_data);
 
     return (
@@ -14,7 +18,11 @@ export default function Welcome({ hawker, isOpenNow }) {
                     <div className="bg-[#F5F5F5] w-full rounded-[1rem] flex flex-col justify-center items-center py-10 px-6 lg:py-20 lg:px-10">
                         <img
                             className="w-20 lg:w-32 mb-6"
-                            src={isOpenNow ? "/images/open.png" : "/images/closed.png"}
+                            src={
+                                isOpenNow
+                                    ? "/images/open.png"
+                                    : "/images/closed.png"
+                            }
                         />
                         <div className="text-2xl lg:text-4xl font-bold text-center mb-2">
                             {data.name}
@@ -32,7 +40,7 @@ export default function Welcome({ hawker, isOpenNow }) {
                                     Next scheduled cleaning date
                                 </div>
                                 <div className="text-xl lg:text-2xl font-bold text-center">
-                                    7 May 2022, Sat
+                                    {nextScheduledCleaningDate}
                                 </div>
                             </div>
                         </div>
