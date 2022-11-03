@@ -3,6 +3,7 @@ To easily find whether the hawker centres in singapore are closed for cleaning. 
 
 ## Todo
 List of things to work on. It is listed either here or in the code as "todo:" whichever is more convenient.
+- add current cleaning date
 - do not center the content when in mobile
 - create scheduled commands to update the data from data gov daily
 - search with distance calculated
