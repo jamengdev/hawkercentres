@@ -100,6 +100,7 @@ export default function Home(props) {
                                                 }
                                             >
                                                 <div>{hawker.name}</div>
+                                                <div className="text-[#3f3e38] text-xs">{hawker.address_myenv}</div>
                                             </Combobox.Option>
                                         ))}
                                         {query && filtered.length === 0 && (

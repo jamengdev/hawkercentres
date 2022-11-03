@@ -3,9 +3,7 @@ Designed and built because we wanted to eat, but hawker centre was closed for cl
 
 ## Todo
 List of things to work on. It is listed either here or in the code as "todo:" whichever is more convenient.
-- add current cleaning date
 - do not center the content when in mobile
-- create scheduled commands to update the data from data gov daily
 - search with distance calculated
 - install fonts
 - search result list should show the address
