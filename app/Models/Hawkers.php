@@ -13,6 +13,38 @@ class Hawkers extends Model
 
     protected $guarded = [];
 
+    public function currentCleaningDate()
+    {
+        $data = json_decode($this->api_data);
+        $now = Carbon::now();
+
+        if ($this->isBetween($now, $data->q1_cleaningstartdate, $data->q1_cleaningenddate)) {
+            $start = Carbon::createFromFormat('d/m/Y', $data->q1_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+            $end = Carbon::createFromFormat('d/m/Y', $data->q1_cleaningenddate, 'Asia/Singapore')->startOfDay();
+            return $start->format('d M Y, D') .' to '. $end->format('d M Y, D');
+        }
+
+        if ($this->isBetween($now, $data->q2_cleaningstartdate, $data->q2_cleaningenddate)) {
+            $start = Carbon::createFromFormat('d/m/Y', $data->q2_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+            $end = Carbon::createFromFormat('d/m/Y', $data->q2_cleaningenddate, 'Asia/Singapore')->startOfDay();
+            return $start->format('d M Y, D') .' to '. $end->format('d M Y, D');
+        }
+
+        if ($this->isBetween($now, $data->q3_cleaningstartdate, $data->q3_cleaningenddate)) {
+            $start = Carbon::createFromFormat('d/m/Y', $data->q3_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+            $end = Carbon::createFromFormat('d/m/Y', $data->q3_cleaningenddate, 'Asia/Singapore')->startOfDay();
+            return $start->format('d M Y, D') .' to '. $end->format('d M Y, D');
+        }
+
+        if ($this->isBetween($now, $data->q4_cleaningstartdate, $data->q4_cleaningenddate)) {
+            $start = Carbon::createFromFormat('d/m/Y', $data->q4_cleaningstartdate, 'Asia/Singapore')->startOfDay();
+            $end = Carbon::createFromFormat('d/m/Y', $data->q4_cleaningenddate, 'Asia/Singapore')->startOfDay();
+            return $start->format('d M Y, D') .' to '. $end->format('d M Y, D');
+        }
+
+        return '';
+    }
+
     public function nextScheduledCleaningDate()
     {
         $data = json_decode($this->api_data);
@@ -45,29 +77,29 @@ class Hawkers extends Model
     public function isOpenNow()
     {
         $data = json_decode($this->api_data);
+        $now = Carbon::now();
 
-        if ($this->isOpenBetween($data->q1_cleaningstartdate, $data->q1_cleaningenddate)) {
-            return true;
+        if ($this->isBetween($now, $data->q1_cleaningstartdate, $data->q1_cleaningenddate)) {
+            return false;
         }
 
-        if ($this->isOpenBetween($data->q2_cleaningstartdate, $data->q2_cleaningenddate)) {
-            return true;
+        if ($this->isBetween($now, $data->q2_cleaningstartdate, $data->q2_cleaningenddate)) {
+            return false;
         }
 
-        if ($this->isOpenBetween($data->q3_cleaningstartdate, $data->q3_cleaningenddate)) {
-            return true;
+        if ($this->isBetween($now, $data->q3_cleaningstartdate, $data->q3_cleaningenddate)) {
+            return false;
         }
 
-        if ($this->isOpenBetween($data->q4_cleaningstartdate, $data->q4_cleaningenddate)) {
-            return true;
+        if ($this->isBetween($now, $data->q4_cleaningstartdate, $data->q4_cleaningenddate)) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
-    protected function isOpenBetween($start, $end)
+    protected function isBetween($now, $start, $end)
     {
-        $now = Carbon::now();
         $startCleaningDate = Carbon::createFromFormat('d/m/Y', $start, 'Asia/Singapore')->startOfDay();
         $endCleaningDate = Carbon::createFromFormat('d/m/Y', $end, 'Asia/Singapore')->endOfDay();
 

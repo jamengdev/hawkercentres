@@ -4,6 +4,7 @@ export default function Welcome({
     hawker,
     isOpenNow,
     nextScheduledCleaningDate,
+    currentCleaningScheduleDate,
 }) {
     const data = JSON.parse(hawker.api_data);
 
@@ -30,17 +31,49 @@ export default function Welcome({
                         <div className="text-xl lg:text-2xl text-center mb-10">
                             {data.address_myenv}
                         </div>
-                        <div className="flex flex-col lg:flex-row justify-center items-center bg-[#FFF4C1] px-10 py-6">
-                            <img
-                                className="w-12 h-12 lg:w-16 lg:h-16 mr-6 mb-4 lg:mb-0"
-                                src="/images/bucket.png"
-                            />
-                            <div className="flex flex-col items-center justify-center">
-                                <div className="text-xl lg:text-2xl text-center">
-                                    Next scheduled cleaning date
+                        <div className="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0">
+                            {currentCleaningScheduleDate && (
+                                <div className="flex flex-1 flex-col lg:flex-row justify-center items-center bg-[#C5F1FF] px-10 py-6">
+                                    <img
+                                        className="w-12 h-12 lg:w-16 lg:h-16 mr-6 mb-4 lg:mb-0"
+                                        src="/images/bubbles.png"
+                                    />
+                                    <div className="flex flex-col items-center justify-center">
+                                        <div className="text-xl lg:text-2xl text-center">
+                                            Cleaning from
+                                        </div>
+                                        <div className="text-xl lg:text-2xl font-bold text-center">
+                                            <div>
+                                                {
+                                                    currentCleaningScheduleDate.split(
+                                                        "to"
+                                                    )[0]
+                                                }
+                                            </div>
+                                            <div>to</div>
+                                            <div>
+                                                {
+                                                    currentCleaningScheduleDate.split(
+                                                        "to"
+                                                    )[1]
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-xl lg:text-2xl font-bold text-center">
-                                    {nextScheduledCleaningDate}
+                            )}
+                            <div className="flex flex-1 flex-col lg:flex-row justify-center items-center bg-[#FFF4C1] px-10 py-6">
+                                <img
+                                    className="w-12 h-12 lg:w-16 lg:h-16 mr-6 mb-4 lg:mb-0"
+                                    src="/images/bucket.png"
+                                />
+                                <div className="flex flex-col items-center justify-center">
+                                    <div className="text-xl lg:text-2xl text-center">
+                                        Next scheduled cleaning date
+                                    </div>
+                                    <div className="text-xl lg:text-2xl font-bold text-center">
+                                        {nextScheduledCleaningDate}
+                                    </div>
                                 </div>
                             </div>
                         </div>

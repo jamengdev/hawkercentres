@@ -20,6 +20,7 @@ class HawkerController extends Controller
         return Inertia::render('Hawker', [
             'hawker' => $hawker,
             'isOpenNow' => $hawker->isOpenNow(),
+            'currentCleaningScheduleDate' => $hawker->currentCleaningDate(),
             'nextScheduledCleaningDate' => $hawker->nextScheduledCleaningDate()->format('d M Y, D')
         ]);
     }
