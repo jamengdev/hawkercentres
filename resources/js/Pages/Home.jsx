@@ -39,11 +39,11 @@ export default function Home(props) {
     return (
         <>
             <Head title="Hawkers" />
+            <div className="mt-20 mb-6 lg:mt-40 lg:mb-12">
+                <FloatingIcons />
+            </div>
             <div className="px-10 lg:flex lg:flex-col lg:items-center lg:justify-center">
                 <div className="flex flex-col max-w-7xl w-full">
-                    <div className="mt-20 mb-6 lg:mt-40 lg:mb-12">
-                        <FloatingIcons />
-                    </div>
                     <div className="flex justify-center">
                         <img
                             className="my-6 lg:my-10 w-full max-w-lg"
@@ -100,7 +100,9 @@ export default function Home(props) {
                                                 }
                                             >
                                                 <div>{hawker.name}</div>
-                                                <div className="text-[#3f3e38] text-xs">{hawker.address_myenv}</div>
+                                                <div className="text-[#3f3e38] text-xs">
+                                                    {hawker.address_myenv}
+                                                </div>
                                             </Combobox.Option>
                                         ))}
                                         {query && filtered.length === 0 && (
@@ -135,8 +137,5 @@ export default function Home(props) {
 }
 
 const FloatingIcons = () => {
-    return (
-        <div id="floating-icons" className="h-20">
-        </div>
-    );
+    return <div id="floating-icons" className="h-20"></div>;
 };
