@@ -45,30 +45,39 @@ class Hawkers extends Model
         return '';
     }
 
+    protected function isTheNextNearestCleaningDate($startCleaningDate, $currentScheduledDate, $now)
+    {
+        try {
+            $startCleaningDate = Carbon::createFromFormat('d/m/Y', $startCleaningDate, 'Asia/Singapore')->startOfDay();
+            if ($now->isBefore($startCleaningDate) && $startCleaningDate->isBefore($currentScheduledDate)) {
+                return true;
+            }
+            return false;
+        } catch (\Throwable $exception) {
+            return false;
+        }
+    }
+
     public function nextScheduledCleaningDate()
     {
         $data = json_decode($this->api_data);
         $now = Carbon::now();
         $nextScheduled = Carbon::now()->endOfYear();
 
-        $startCleaningDateQ1 = Carbon::createFromFormat('d/m/Y', $data->q1_cleaningstartdate, 'Asia/Singapore')->startOfDay();
-        if ($now->isBefore($startCleaningDateQ1) && $startCleaningDateQ1->isBefore($nextScheduled)) {
-            $nextScheduled = $startCleaningDateQ1;
+        if ($this->isTheNextNearestCleaningDate($data->q1_cleaningstartdate, $nextScheduled, $now)) {
+            $nextScheduled = Carbon::createFromFormat('d/m/Y', $data->q1_cleaningstartdate, 'Asia/Singapore')->startOfDay();
         }
 
-        $startCleaningDateQ2 = Carbon::createFromFormat('d/m/Y', $data->q2_cleaningstartdate, 'Asia/Singapore')->startOfDay();
-        if ($now->isBefore($startCleaningDateQ2) && $startCleaningDateQ2->isBefore($nextScheduled)) {
-            $nextScheduled = $startCleaningDateQ2;
+        if ($this->isTheNextNearestCleaningDate($data->q2_cleaningstartdate, $nextScheduled, $now)) {
+            $nextScheduled = Carbon::createFromFormat('d/m/Y', $data->q2_cleaningstartdate, 'Asia/Singapore')->startOfDay();
         }
 
-        $startCleaningDateQ3 = Carbon::createFromFormat('d/m/Y', $data->q3_cleaningstartdate, 'Asia/Singapore')->startOfDay();
-        if ($now->isBefore($startCleaningDateQ3) && $startCleaningDateQ3->isBefore($nextScheduled)) {
-            $nextScheduled = $startCleaningDateQ3;
+        if ($this->isTheNextNearestCleaningDate($data->q3_cleaningstartdate, $nextScheduled, $now)) {
+            $nextScheduled = Carbon::createFromFormat('d/m/Y', $data->q3_cleaningstartdate, 'Asia/Singapore')->startOfDay();
         }
 
-        $startCleaningDateQ4 = Carbon::createFromFormat('d/m/Y', $data->q4_cleaningstartdate, 'Asia/Singapore')->startOfDay();
-        if ($now->isBefore($startCleaningDateQ4) && $startCleaningDateQ4->isBefore($nextScheduled)) {
-            $nextScheduled = $startCleaningDateQ4;
+        if ($this->isTheNextNearestCleaningDate($data->q4_cleaningstartdate, $nextScheduled, $now)) {
+            $nextScheduled = Carbon::createFromFormat('d/m/Y', $data->q4_cleaningstartdate, 'Asia/Singapore')->startOfDay();
         }
 
         return $nextScheduled;
@@ -100,13 +109,15 @@ class Hawkers extends Model
 
     protected function isBetween($now, $start, $end)
     {
-        $startCleaningDate = Carbon::createFromFormat('d/m/Y', $start, 'Asia/Singapore')->startOfDay();
-        $endCleaningDate = Carbon::createFromFormat('d/m/Y', $end, 'Asia/Singapore')->endOfDay();
-
-        if ($now->isBetween($startCleaningDate, $endCleaningDate)) {
-            return true;
+        try {
+            $startCleaningDate = Carbon::createFromFormat('d/m/Y', $start, 'Asia/Singapore')->startOfDay();
+            $endCleaningDate = Carbon::createFromFormat('d/m/Y', $end, 'Asia/Singapore')->endOfDay();
+            if ($now->isBetween($startCleaningDate, $endCleaningDate)) {
+                return true;
+            }
+            return false;
+        } catch (\Throwable $exception) {
+            return false;
         }
-
-        return false;
     }
 }
