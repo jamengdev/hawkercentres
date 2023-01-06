@@ -1,4 +1,4 @@
-## Where is it hosted?
+## Where to find it?
 https://hawkeropenornot.buttercoffee.dev/
 
 ## Why this?
